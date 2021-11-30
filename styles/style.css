@@ -25,3 +25,8 @@ h2 {
     flex-direction: column;
     justify-content: space-around;
 }
+
+.button {
+    margin: 30px;
+    padding: 10px 0 10px 0;
+}
