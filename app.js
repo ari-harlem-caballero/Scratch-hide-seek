@@ -49,6 +49,49 @@ blueButton.addEventListener('click', () => {
 
     displayScore();
 }); 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+
+roseButton.addEventListener('click', () => {
+
+    resetImg();
+
+    total++;
+
+    const randomCupNum = Math.floor(Math.random() * 3);
+    
+    if (randomCupNum === 1) {
+        wins++;
+
+        roseImg.src = './assets/cup_rose_duck.png';
+
+    } else if (randomCupNum === 0) {
+        blueImg.src = './assets/cup_blue_duck.png';
+
+    } else {
+        purpleImg.src = './assets/cup_purple_duck.png';
+    }
+
+    displayScore();
+}); 
+
+purpleButton.addEventListener('click', () => {
+
+    resetImg();
+
+    total++;
+
+    const randomCupNum = Math.floor(Math.random() * 3);
+    
+    if (randomCupNum === 2) {
+        wins++;
+
+        purpleImg.src = './assets/cup_purple_duck.png';
+
+    } else if (randomCupNum === 0) {
+        blueImg.src = './assets/cup_blue_duck.png';
+
+    } else {
+        roseImg.src = './assets/cup_rose_duck.png';
+    }
+
+    displayScore();
+}); 
