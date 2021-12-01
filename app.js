@@ -5,19 +5,25 @@ const purpleButton = document.getElementById('purple-button');
 const blueImg = document.getElementById('blue');
 const roseImg = document.getElementById('rose');
 const purpleImg = document.getElementById('purple');
-const winsElem = document.getElementById('wins');
+const winsElem = document.getElementById('win');
 const lossElem = document.getElementById('loss');
 const totalElem = document.getElementById('total');
 
 // let state
 let wins = 0;
-let loss = 0;
+// let loss = 0;
 let total = 0;
 
 function resetImg() {
     blueImg.src = './assets/cup_blue_start.png';
     roseImg.src = './assets/cup_rose_start.png';
     purpleImg.src = './assets/cup_purple_start.png';
+}
+
+function displayScore() {
+    winsElem.textContent = wins;
+    lossElem.textContent = total - wins;
+    totalElem.textContent = total;
 }
 
 // set event listeners
@@ -40,6 +46,8 @@ blueButton.addEventListener('click', () => {
     } else {
         purpleImg.src = './assets/cup_purple_duck.png';
     }
+
+    displayScore();
 }); 
   // get user input
   // use user input to update state 
