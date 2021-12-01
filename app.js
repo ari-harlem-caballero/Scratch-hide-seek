@@ -33,6 +33,12 @@ blueButton.addEventListener('click', () => {
         wins++;
 
         blueImg.src = './assets/cup_blue_duck.png';
+
+    } else if (randomCupNum === 1) {
+        roseImg.src = './assets/cup_rose_duck.png';
+
+    } else {
+        purpleImg.src = './assets/cup_purple_duck.png';
     }
 }); 
   // get user input
