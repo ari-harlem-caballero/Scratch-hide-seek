@@ -14,6 +14,12 @@ let wins = 0;
 // let loss = 0;
 let total = 0;
 
+const cupImgId = [
+    'blue',
+    'rose',
+    'purple'
+];
+
 function resetImg() {
     blueImg.src = './assets/cup_blue_start.png';
     roseImg.src = './assets/cup_rose_start.png';
@@ -28,70 +34,38 @@ function displayScore() {
 
 // set event listeners
 blueButton.addEventListener('click', () => {
-
-    resetImg();
-
-    total++;
-
-    const randomCupNum = Math.floor(Math.random() * 3);
-    
-    if (randomCupNum === 0) {
-        wins++;
-
-        blueImg.src = './assets/cup_blue_duck.png';
-
-    } else if (randomCupNum === 1) {
-        roseImg.src = './assets/cup_rose_duck.png';
-
-    } else {
-        purpleImg.src = './assets/cup_purple_duck.png';
-    }
-
-    displayScore();
+    const correctCup = getRandomItem(cupImgId);
+    handleGuess('blue', correctCup);
 }); 
 
 roseButton.addEventListener('click', () => {
-
-    resetImg();
-
-    total++;
-
-    const randomCupNum = Math.floor(Math.random() * 3);
-    
-    if (randomCupNum === 1) {
-        wins++;
-
-        roseImg.src = './assets/cup_rose_duck.png';
-
-    } else if (randomCupNum === 0) {
-        blueImg.src = './assets/cup_blue_duck.png';
-
-    } else {
-        purpleImg.src = './assets/cup_purple_duck.png';
-    }
-
-    displayScore();
+    const correctCup = getRandomItem(cupImgId);
+    handleGuess('rose', correctCup);
 }); 
 
 purpleButton.addEventListener('click', () => {
+    const correctCup = getRandomItem(cupImgId);
+    handleGuess('purple', correctCup);
+}); 
 
+function getRandomItem(arr) {
+    const index = Math.floor(Math.random() * arr.length);
+    
+    return arr[index];
+}
+
+function handleGuess(userGuess, correctSpot) {
     resetImg();
 
     total++;
 
-    const randomCupNum = Math.floor(Math.random() * 3);
-    
-    if (randomCupNum === 2) {
+    const correctImg = document.getElementById(`${correctSpot}`);
+
+    correctImg.src = `./assets/cup_${correctSpot}_duck.png`;
+
+    if (userGuess === correctSpot) {
         wins++;
-
-        purpleImg.src = './assets/cup_purple_duck.png';
-
-    } else if (randomCupNum === 0) {
-        blueImg.src = './assets/cup_blue_duck.png';
-
-    } else {
-        roseImg.src = './assets/cup_rose_duck.png';
     }
 
     displayScore();
-}); 
+}
